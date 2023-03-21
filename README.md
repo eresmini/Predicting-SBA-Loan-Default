@@ -40,6 +40,18 @@ Looking at the numerical data, we see a wide distribution of values and a lot of
 ### Where's the Risk?
 ![image](https://user-images.githubusercontent.com/70169642/226689915-ba80eb87-7fb9-44b9-bf10-c37314a01847.png)
 
+### Economic Impacts on SBA Loans
+![image](https://user-images.githubusercontent.com/70169642/226691354-4deab9b6-bbdf-46ed-aa27-958aa7c16d38.png)
+
+## Model Selection
+
+
+## Results
+
+
+#### Feature Importance
+![image](https://user-images.githubusercontent.com/70169642/226691230-8379ed3a-5800-4f3a-93b7-07d89c6abf2f.png)
+
 
 
 
