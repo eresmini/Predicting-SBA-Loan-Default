@@ -1,6 +1,6 @@
 # Predicting-SBA-Loan-Default
 
-## Presented on March 10, 2023
+### Presented on March 10, 2023
 
 ## Summary
 This project utilizes random forest and gradient boosting to predict if a Small Business Administration loan will default.
