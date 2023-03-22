@@ -38,23 +38,34 @@ Data cleaning consisted of:
 Looking at the numerical data, we see a wide distribution of values and a lot of variation. Small businesses can widely differ from each other, for example the number of employees (0-1500). Likewise with the loans themselves, some SBA loans are only for a few thousand dollars while others are for a few million. This would also greatly affect the length of the loan term.
 ![image](https://user-images.githubusercontent.com/70169642/226688829-6101faaf-223a-46e8-873c-3781ee1ab1a5.png)
 
-## EDA
-### Where's the Risk?
-![image](https://user-images.githubusercontent.com/70169642/226689915-ba80eb87-7fb9-44b9-bf10-c37314a01847.png)
+## Modeling
+### Considerations
+As stated in the previous section, this dataset contains a lot of variation in numerical data, and many outliers. Additionally, we see a significant class imbalance within our target variable (see plot below). Especially when class imbalance is an issue, it is common for a model to simply predict the 'major' class for all cases, and while technically getting a high accuracy in testing, the model would return very poor precision and recall scores. Ultimately, I chose to use ensemble methods for this project; ensemble methods combine base models in order to produce one optimal predictive model, and thus tend to handle issues such as class imbalance and outliers better than other types of classification models.
 
-### Economic Impacts on SBA Loans
-![image](https://user-images.githubusercontent.com/70169642/226691354-4deab9b6-bbdf-46ed-aa27-958aa7c16d38.png)
+### Random Forest
+The random forest performed well, giving high accuracy but also promising precision and recall scores.
+![image](https://user-images.githubusercontent.com/70169642/226979672-8a0aea74-e938-40e7-aa15-c98203b566ea.png)
 
-## Model Selection
+Metrics: 'accuracy': 0.9239352273610022, 'precision': 0.8346023688663282, 'recall': 0.710024391219161
+
+The precision score shows that out of all predictions of defaulted loans, about 83% were labelled correctly. The recall was not as reliable, with only 71% of all default loans being predicted accurately.
+
+Looking at feature importance (plotted below), the random forest model gave the most importance to the term length of the loan, followed by the number of days between approval and disbursement. This weighting is logical: short-term loans are considered safer, while long-term loans are considered riskier and tend to have higher interest rates to compensate for the risk. For days until disbursement, the difference between waiting a couple weeks versus a couple months can make a critical difference in a business's financial stability and overall success.
+![image](https://user-images.githubusercontent.com/70169642/226980208-6546edd3-50b5-4c5d-9c7d-2995a92f5d2a.png)
 
 
-## Results
+### Gradient Boosting
+The gradient boosting model performed very similarly to the random forest model. Again, we see high overall accuracy and moderate precision and recall scores: 'accuracy': 0.9193166811437611, 'precision': 0.8094587206123565, 'recall': 0.7103842616658003
 
+The precision score for gradient boosting is marginally lower than random forest, with 81% of predictions of defaulted loans being accurate, and the precision score is the same as random forest at 71%.
 
-#### Feature Importance
-![image](https://user-images.githubusercontent.com/70169642/226691230-8379ed3a-5800-4f3a-93b7-07d89c6abf2f.png)
+![image](https://user-images.githubusercontent.com/70169642/226981144-50d7bb6b-d798-40a9-9ed6-05ba6056f75b.png)
 
+Looking at feature importance, the gradient boosting put the most weight overwhelmingly on the term length of the loan. While, as stated previously, this feature can play an important roll in assessing the risk of default on a loan, I do prefer random forest once more for putting more weight of importance on more features.
+![image](https://user-images.githubusercontent.com/70169642/226982811-f0fc4865-b7f0-4360-9536-e00fc417ee2f.png)
 
+### Conclusion
+While both models returned similar results, random forest did perform the best out of the two, and also gave more consideration to more features when making predictions.
 
 
 
