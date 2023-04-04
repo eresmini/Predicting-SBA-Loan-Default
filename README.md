@@ -36,7 +36,7 @@ Data cleaning consisted of:
 
 ## Not All Small Businesses Are Alike
 Looking at the numerical data, we see a wide distribution of values and a lot of variation. Small businesses can widely differ from each other, for example the number of employees (0-1500). Likewise with the loans themselves, some SBA loans are only for a few thousand dollars while others are for a few million. This would also greatly affect the length of the loan term.
-![image](https://user-images.githubusercontent.com/70169642/226688829-6101faaf-223a-46e8-873c-3781ee1ab1a5.png)
+![image](https://user-images.githubusercontent.com/70169642/229910054-f832b41f-f48d-41b1-8485-0d54815f754a.png)
 
 ## Modeling
 ### Considerations
@@ -44,25 +44,25 @@ As stated in the previous section, this dataset contains a lot of variation in n
 
 ### Random Forest
 The random forest performed well, giving high accuracy but also promising precision and recall scores.
-![image](https://user-images.githubusercontent.com/70169642/226979672-8a0aea74-e938-40e7-aa15-c98203b566ea.png)
+![image](https://user-images.githubusercontent.com/70169642/229910191-8be8f491-964d-4654-bf77-dcad34dad34d.png)
 
-Metrics: 'accuracy': 0.9239352273610022, 'precision': 0.8346023688663282, 'recall': 0.710024391219161
+Metrics: 'accuracy': 0.9272883262473547, 'precision': 0.8418504043457955, 'recall': 0.7305050763586725
 
-The precision score shows that out of all predictions of defaulted loans, about 83% were labelled correctly. The recall was not as reliable, with only 71% of all default loans being predicted accurately.
+The precision score shows that out of all predictions of defaulted loans, about 84% were labelled correctly. The recall was not as reliable, with only 73% of all default loans being predicted accurately.
 
 Looking at feature importance (plotted below), the random forest model gave the most importance to the term length of the loan, followed by the number of days between approval and disbursement. This weighting is logical: short-term loans are considered safer, while long-term loans are considered riskier and tend to have higher interest rates to compensate for the risk. For days until disbursement, the difference between waiting a couple weeks versus a couple months can make a critical difference in a business's financial stability and overall success.
-![image](https://user-images.githubusercontent.com/70169642/226980208-6546edd3-50b5-4c5d-9c7d-2995a92f5d2a.png)
+![image](https://user-images.githubusercontent.com/70169642/229910397-96bed7de-50cf-4b4f-a9db-faf4f0dd3b3d.png)
 
 
 ### Gradient Boosting
-The gradient boosting model performed very similarly to the random forest model. Again, we see high overall accuracy and moderate precision and recall scores: 'accuracy': 0.9193166811437611, 'precision': 0.8094587206123565, 'recall': 0.7103842616658003
+The gradient boosting model performed very similarly to the random forest model. Again, we see high overall accuracy and moderate precision and recall scores: 'accuracy': 0.9189948714037864, 'precision': 0.8185884691848907, 'recall': 0.7025851036600973
 
-The precision score for gradient boosting is marginally lower than random forest, with 81% of predictions of defaulted loans being accurate, and the precision score is the same as random forest at 71%.
-
-![image](https://user-images.githubusercontent.com/70169642/226981144-50d7bb6b-d798-40a9-9ed6-05ba6056f75b.png)
-
+The precision score for gradient boosting is marginally lower than random forest, with 81% of predictions of defaulted loans being accurate, and the precision score is also lower than random forest at 70%.
+  
+![image](https://user-images.githubusercontent.com/70169642/229910585-41a1c3aa-ed93-470f-845c-ca8ae89deca9.png)
+  
 Looking at feature importance, the gradient boosting put the most weight overwhelmingly on the term length of the loan. While, as stated previously, this feature can play an important roll in assessing the risk of default on a loan, I do prefer random forest once more for putting more weight of importance on more features.
-![image](https://user-images.githubusercontent.com/70169642/226982811-f0fc4865-b7f0-4360-9536-e00fc417ee2f.png)
+![image](https://user-images.githubusercontent.com/70169642/229910494-3173b6ad-219e-4d60-8fb4-a5a757ee4b7b.png)
 
 ### Conclusion
 While both models returned similar results, random forest did perform the best out of the two, and also gave more consideration to more features when making predictions.
